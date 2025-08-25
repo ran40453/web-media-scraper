@@ -23,35 +23,6 @@
 ## 選用：桌面啟動器
 App 內建「在桌面建立啟動器 (Win/macOS)」按鈕，可一鍵生成啟動捷徑。
 
-## GitHub 發布教學
-
-### A. 用瀏覽器上傳（最簡單）
-1. 到 GitHub 建一個新 repo，例如 `web-media-scraper`。
-2. 在 repo 頁面點 **Add file → Upload files**，將以下檔案全部拖進去：
-   - `app.py`
-   - `requirements.txt`
-   - `setup_win.bat`
-   - `setup_mac.command`
-   - `.gitignore`
-   - `README.md`
-3. Commit 上去就完成。
-
-### B. 用 Git（命令列）
-```bash
-git init
-git add .
-git commit -m "Initial commit: web media scraper"
-git branch -M main
-git remote add origin https://github.com/<你的帳號>/web-media-scraper.git
-git push -u origin main
-```
-
-### C. 發佈 zip（可放在 Releases）
-1. 先在本機打包：
-   ```bash
-   zip -r web-media-scraper.zip .
-   ```
-2. 在 GitHub 專案頁 → **Releases** → **Draft a new release**，上傳 `web-media-scraper.zip` 即可。
 
 ## 需求
 - Python 3.9+
