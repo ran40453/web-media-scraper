@@ -20,6 +20,15 @@ import hashlib
 from typing import List, Tuple, Dict, Optional
 import platform
 
+# --- Windows asyncio 事件迴圈修正：Playwright 需要 Proactor loop 支援 subprocess ---
+import asyncio, sys
+if sys.platform.startswith("win"):
+    try:
+        asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
+    except Exception:
+        pass
+
+
 import pandas as pd
 import requests
 import streamlit as st
@@ -52,6 +61,15 @@ class MediaItem:
     filename: str
     size: Optional[int] = None  # bytes
     content_type: str = ""
+
+def fetch_html_playwright(...):
+    # 確保在 Windows 下是 Proactor loop（避免 NotImplementedError）
+    if sys.platform.startswith("win"):
+        try:
+            asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
+        except Exception:
+            pass
+    ...
 
 def load_config() -> Dict:
     if os.path.exists(CONFIG_PATH):
